@@ -1,5 +1,5 @@
 # The Silly Frog Game™
-A funky "game" I made for my gf in 7 hours
+A funky "game" I made for my gf in a bunch of days
 
 It's in german so err yeah
 
