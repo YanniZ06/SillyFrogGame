@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="cursor.png">
 	<!-- Created with Adobe Animate version 20.0.0.17400 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="cursor0000" x="0" y="0" width="64" height="64"/>
-	<SubTexture name="fly cursor0000" x="64" y="0" width="64" height="64"/>
-	<SubTexture name="grab cursor0000" x="0" y="64" width="64" height="64"/>
-	<SubTexture name="pet cursor0000" x="64" y="64" width="64" height="64"/>
+	<SubTexture name="main0000" x="0" y="0" width="64" height="64"/>
+	<SubTexture name="fly0000" x="64" y="0" width="64" height="64"/>
+	<SubTexture name="grab0000" x="0" y="64" width="64" height="64"/>
+	<SubTexture name="pet0000" x="64" y="64" width="64" height="64"/>
 </TextureAtlas>
