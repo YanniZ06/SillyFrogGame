@@ -15,7 +15,8 @@ enum Resetables {
  */
 class AssetUtil
 {
-	public static var currentTrackedAssets:Array<String> = [];
+	public static var currentTrackedAssets:Map<String, Bool> = []; //Maps are faster than arrays
+	public static var currentTrackedSounds:Map<String, openfl.media.Sound> = [];
 
 	// Quickly janked stffs from denpa lmaoo (seperate project im on)
 	inline static public function animFrames(key:String) 
@@ -26,17 +27,23 @@ class AssetUtil
 		var path:String = 'assets/$key.png';
 		if (OpenFlAssets.exists(path, IMAGE))
 		{
-			if (!currentTrackedAssets.contains(path) && !FlxG.bitmap.checkCache(path))
+			if (currentTrackedAssets.get(path) == null || !FlxG.bitmap.checkCache(path))
 			{
 				var newGraphic:FlxGraphic = FlxG.bitmap.add(path, false, path);
 				newGraphic.persist = persist;
-				currentTrackedAssets.push(path);
+				currentTrackedAssets.set(path, true);
 			}
 			return FlxG.bitmap.get(path);
 		}
 
 		trace('img is null assets/$key.png ');
 		return null;
+	}
+
+	public static function getSound(key:String):openfl.media.Sound {
+		final path:String = 'assets/$key.ogg';
+		if (!currentTrackedSounds.exists(path)) currentTrackedSounds.set(path, OpenFlAssets.getSound(path)); //Make next cache quicker??
+		return currentTrackedSounds.get(path);
 	}
 }
 
@@ -47,6 +54,7 @@ class SpriteBase extends flixel.FlxSprite {
 		super(x, y);
 		final usedScale = customScale != null ? customScale : defaultScale;
 		scale.set(usedScale.x, usedScale.y);
+		updateHitbox();
 		antialiasing = false;
 	}
 }
