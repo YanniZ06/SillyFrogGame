@@ -54,10 +54,7 @@ class CursorHand extends AssetUtil.SpriteBase {
 	public function inputCheck(event:MouseEvent) {
         switch(event.type) {
 			case MouseEvent.MOUSE_DOWN:
-				if (ref.overlaps(PlayState.cur.frog)) { 
-					visible = false;
-					PlayState.cur.frog.pet();
-				}
+				if (ref.overlaps(PlayState.cur.frog) && PlayState.cur.frog.pet()) visible = false;
             case MouseEvent.MOUSE_UP:
             case MouseEvent.MOUSE_MOVE:
                 this.setPosition(ref.screenX, ref.screenY);

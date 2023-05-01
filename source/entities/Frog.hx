@@ -57,8 +57,8 @@ class Frog extends AssetUtil.SpriteBase {
     }
 
     public var busy = false;
-    public function pet() {
-        if(busy) return;
+    public function pet():Bool {
+        if(busy) return false;
 
 		busy = true;
 		FlxTween.tween(this, {"scale.x": defaultScale.x, "scale.y": defaultScale.y}, 0.2, {
@@ -67,6 +67,7 @@ class Frog extends AssetUtil.SpriteBase {
 
 		FlxG.sound.play(Spr.getSound('frog/happyCroak'), 0.8);
         playAnim("pet");
+		return true;
     }
 
     /*public function canPlayAnim(name:String = "idle"):Bool {
